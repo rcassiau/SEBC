@@ -1,2 +1,0 @@
-# SEBC
-Cloudera
