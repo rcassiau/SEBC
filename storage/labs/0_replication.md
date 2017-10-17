@@ -67,8 +67,9 @@ HDFS Lab: Replicate to another cluster
 * Browse the results 
     * Use `hdfs fsck <path> -files -blocks` on your source and target directories
 	- from source directory
-	```
-	[hdfs@ip-172-31-43-15 root]$ hdfs fsck /user/rcassiau -files -blocks
+
+```
+[hdfs@ip-172-31-43-15 root]$ hdfs fsck /user/rcassiau -files -blocks
 Connecting to namenode via http://ip-172-31-43-15.eu-west-1.compute.internal:50070
 FSCK started by hdfs (auth:SIMPLE) from /172.31.43.15 for path /user/rcassiau at Tue Oct 17 09:39:53 EDT 2017
 /user/rcassiau <dir>
@@ -104,10 +105,11 @@ FSCK ended at Tue Oct 17 09:39:53 EDT 2017 in 3 milliseconds
 
 The filesystem under path '/user/rcassiau' is HEALTHY
 
-	```
+```
 
 	- from target directory 
-	```	
+
+```	
 [hdfs@ip-172-31-43-15 root]$ hdfs fsck /user/dboyer-ibm -files -blocks
 Connecting to namenode via http://ip-172-31-43-15.eu-west-1.compute.internal:50070
 FSCK started by hdfs (auth:SIMPLE) from /172.31.43.15 for path /user/dboyer-ibm at Tue Oct 17 09:40:10 EDT 2017
@@ -147,7 +149,8 @@ FSCK ended at Tue Oct 17 09:40:10 EDT 2017 in 2 milliseconds
 
 
 The filesystem under path '/user/dboyer-ibm' is HEALTHY
+```
 
-
-
-	```
+```
+HADOOP_USER_NAME=hdfs hadoop distcp hftp://`hostname`:50070/user/Mladen-Trampic-SRB-1989/teragen-input hdfs://`hostname`:8020/user/feanor21
+```
