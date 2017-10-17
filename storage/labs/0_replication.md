@@ -106,7 +106,6 @@ FSCK ended at Tue Oct 17 09:39:53 EDT 2017 in 3 milliseconds
 The filesystem under path '/user/rcassiau' is HEALTHY
 
 ```
-
 	- from target directory 
 
 ```	
@@ -151,6 +150,3 @@ FSCK ended at Tue Oct 17 09:40:10 EDT 2017 in 2 milliseconds
 The filesystem under path '/user/dboyer-ibm' is HEALTHY
 ```
 
-```
-HADOOP_USER_NAME=hdfs hadoop distcp hftp://`hostname`:50070/user/Mladen-Trampic-SRB-1989/teragen-input hdfs://`hostname`:8020/user/feanor21
-```
