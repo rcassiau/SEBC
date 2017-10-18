@@ -1,12 +1,14 @@
 - Check vm.swappiness on all your nodes
+```
 ===> set swappiness to 1 on all hosts
 sysctl vm.swappiness=1
 ===> set swappiness to 1 definitively on all hosts
 echo vm.swappiness=1 >> /etc/sysctl.conf
 [root@ip-172-31-43-15 ~]# sysctl vm.swappiness
 vm.swappiness = 1
-
+```
 - Show the mount attributes of all volumes
+```
 [root@ip-172-31-43-15 ~]# mount
 sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime,seclabel)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
@@ -38,20 +40,22 @@ hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,seclabel)
 tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=1497312k,mode=700,uid=1000,gid=1000)
 tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,seclabel,size=1497312k,mode=700)
 /dev/xvdb1 on /data type xfs (rw,noatime,seclabel,attr2,inode64,noquota)
+```
 
 - Show the reserve space of any non-root, ext-based volumes
+```
 All disk are mounted in xfs
-
+```
 - Disable transparent hugepage support
-
+```
 [root@ip-172-31-43-15 ~]# sysctl -a | grep hugepage
 vm.hugepages_treat_as_movable = 0
 vm.nr_hugepages = 0
 vm.nr_hugepages_mempolicy = 0
 vm.nr_overcommit_hugepages = 0
-
+```
 - List your network interface configuration
-
+```
 [root@ip-172-31-43-15 ~]# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -61,9 +65,9 @@ vm.nr_overcommit_hugepages = 0
     link/ether 0a:85:bc:82:6d:2e brd ff:ff:ff:ff:ff:ff
     inet 172.31.43.15/20 brd 172.31.47.255 scope global dynamic eth0
        valid_lft 3581sec preferred_lft 3581sec
-
+```
 - List forward and reverse host lookups using getent or nslookup
-
+```
 [root@ip-172-31-43-15 ~]# nslookup ec2-34-253-82-44.eu-west-1.compute.amazonaws.com
 Server:		172.31.0.2
 Address:	172.31.0.2#53
@@ -103,9 +107,9 @@ Address:	172.31.0.2#53
 Non-authoritative answer:
 Name:	ec2-52-208-110-249.eu-west-1.compute.amazonaws.com
 Address: 172.31.41.242
-
+```
 - Verify the nscd service is running
-
+```
 [root@ip-172-31-43-15 ~]# systemctl status nscd
 ● nscd.service - Name Service Cache Daemon
    Loaded: loaded (/usr/lib/systemd/system/nscd.service; enabled; vendor preset: disabled)
@@ -115,9 +119,9 @@ Address: 172.31.41.242
  Main PID: 3887 (nscd)
    CGroup: /system.slice/nscd.service
            └─3887 /usr/sbin/nscd
-
+```
 - Verify the ntpd service is running
-
+```
 root@ip-172-31-43-15 ~]# systemctl status ntpd
 ● ntpd.service - Network Time Service
    Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)
@@ -125,3 +129,4 @@ root@ip-172-31-43-15 ~]# systemctl status ntpd
  Main PID: 2892 (ntpd)
    CGroup: /system.slice/ntpd.service
            └─2892 /usr/sbin/ntpd -u ntp:ntp -g
+```
